@@ -11,6 +11,20 @@ main {
   margin: 0 0 4rem;
 }
 
+/* A MILHA EXTRA */
+/* Muda a cor do mapa quando para vermelho
+quando o usuário não selecionar a localização */
+.map-container.invalid {
+  border-color: #ff669d;
+}
+
+/* A MILHA EXTRA */
+/* Muda a cor do mapa quando para vermelho
+quando o usuário não selecionar a localização */
+.map-container.invalid footer a {
+  color: #ff4958;
+}
+
 .map-container .leaflet-container {
   border-radius: 2rem 2rem 0 0;
 }

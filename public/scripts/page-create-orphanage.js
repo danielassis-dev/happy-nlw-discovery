@@ -11,6 +11,34 @@ const icon = L.icon({
   iconAnchor: [29, 68],
 });
 
+// A MILHA EXTRA
+// Cria variáveis para facilitar e limpar o código
+const latInput = document.querySelector("[name=lat]");
+const lngInput = document.querySelector("[name=lng]");
+const form = document.querySelector("form");
+const mapInputBox = document.querySelector(".map-container");
+let locationSelected = false;
+
+// A MILHA EXTRA
+form.addEventListener("submit", (event) => {
+  if (!locationSelected) {
+    // Muda a cor do mapa para vermelho, indicando que o usuário deve
+    // selecionar a localização do orfanato(abrigo infantil)
+    // antes de submeter o formulário
+
+    // Adiciona a classe invalid (Para mudar o estilo via CSS)
+    mapInputBox.classList.add("invalid");
+
+    // Sobe a tela até em cima
+    window.scrollTo(0, 0);
+
+    // Previne o envio do formulário
+    event.preventDefault();
+
+    alert("Selecione um ponto no mapa");
+  }
+});
+
 let marker;
 // create and add marker
 // update latlng input
@@ -19,8 +47,10 @@ map.on("click", (event) => {
   const lng = event.latlng.lng;
 
   // update latlng input
-  document.querySelector("[name=lat]").value = lat;
-  document.querySelector("[name=lng]").value = lng;
+  latInput.value = lat;
+  lngInput.value = lng;
+  locationSelected = true;
+  mapInputBox.classList.remove("invalid");
 
   // remove icon
   marker && map.removeLayer(marker);
